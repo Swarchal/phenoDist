@@ -1,0 +1,8 @@
+Package: phenoDist
+Title: Distance Measurements in Phenotypic Screening
+Version: 0.0.0.9000
+Authors@R: person("Scott", "Warchal", email = "S.Warchal@sms.ed.ac.uk", role = c("aut", "cre"))
+Description: Functions for my own use. Useful for distance measurements in phenotypic screening..
+Depends: R (>= 3.2.3)
+License: MIT
+LazyData: true
