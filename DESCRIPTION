@@ -6,3 +6,4 @@ Description: Functions for my own use. Useful for distance measurements in pheno
 Depends: R (>= 3.2.3)
 License: MIT
 LazyData: true
+Suggests: testthat
