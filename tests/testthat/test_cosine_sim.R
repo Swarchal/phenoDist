@@ -6,6 +6,7 @@ test_that("cosine_sim_vector returns errors when expected",{
 	expect_error(cosine_sim_vector(a10, b20))
 	expect_error(cosine_sim_vector(c(1,2), c("a", "b")))
 	expect_error(cosine_sim_vector(list(1,2), list(1,2)))
+	expect_error(cosine_sim_vector(iris, mtcars))
 	expect_error(cosine_sim_vector(c("a, b"), c("c", "d")))
 })
 
