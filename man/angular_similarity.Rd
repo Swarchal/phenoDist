@@ -2,7 +2,7 @@
 % Please edit documentation in R/angular_similarity.R
 \name{angular_similarity}
 \alias{angular_similarity}
-\title{Cosine dissimilarity / Angular similarity}
+\title{Angular similarity}
 \usage{
 angular_similarity(a, b)
 }
