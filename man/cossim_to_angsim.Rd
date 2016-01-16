@@ -15,7 +15,7 @@ disim vector of angular similarity values
 \description{
 If a cosine similarity has been calculated by cos_sim, then this function
 will convert the value to angular similarity. Angular similarity is bound
-between 0 and 1, with 1 being most similar, 0 being dissimilar, 0 being
+between 0 and 1, with 1 being most similar, 0 being dissimilar, 0.5 being
 orthogonal
 }
 \examples{
