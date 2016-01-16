@@ -11,7 +11,4 @@ test_that("mahal_dist returns correct answer",{
 	mahal_out_mean <- mahal_dist(iris_vals, center = 'mean')
 	expect_is(mahal_out_med, 'numeric')
 	expect_is(mahal_out_mean, 'numeric')
-
-	mahal_na <- mahal_dist(1)
-	expect_true(is.na(mahal_na))
 })
