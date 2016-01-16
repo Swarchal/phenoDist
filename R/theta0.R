@@ -20,6 +20,10 @@
 theta0 <- function(a){
     # computes the angle between a vector and the origin
     
+    if (length(a) != 2){
+        stop("input vector needs to have a length of 2")
+    }
+    
     # length/norm of a vector 'x'
     norm_vec <- function(x) sqrt(x %*% x)
     
