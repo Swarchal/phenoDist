@@ -1,4 +1,4 @@
-#' Cosine dissimilarity / Angular similarity 
+#' Angular similarity 
 #' 
 #' The normalised angle between two vectors, bounded between 0 and 1.
 #' A value of 1 indicates the two vectors have a similarity of 0 degrees.
@@ -34,7 +34,10 @@ angular_similarity <- function(a, b){
             substitute(a), "and", substitute(b), "need to be the same length")
         )
     }
-    
+    if (length(a) < 2 || length(b) < 2){
+        stop("Vectors need to be at least 2 elements long")
+    }
+
     similarity <- as.vector(a %*% b / sqrt(sum(a^2) * sum(b^2)))
     
     out <- 1 - ((acos(similarity)/ pi))
