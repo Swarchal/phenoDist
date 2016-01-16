@@ -15,13 +15,15 @@
 #' sample <- seq(1, 360, 1)
 #' fold_180(sample)
 
+
 fold_180 <- function(x){
 
   if (!is.vector(x)) stop("Expecting a vector")
   if (!is.numeric(x)) stop("Expecting numerical values")
-
-  if (x > 180){ 
-    x <- x - 2 * (x - 180) # reduce 180 by the amount theta is greater than
+  if (max(x) > 360){
+  	warning("Input values exceed 360, will produce negative values")
   }
-  return(x)
+
+  out <- ifelse(x > 180,  x - 2 * (x - 180), x)
+  out
 }
