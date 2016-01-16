@@ -3,10 +3,9 @@
 
 # phenoDist
 
-Similarity and distance metric I've found useful for analysing high-content phenotypic screening data.
+Similarity and distance metrics I've found useful for analysing high-content phenotypic screening data.
 
-To install:
-
+To install from github:
 ```r
 if (!require(devtools)) install.packages("devtools")
 devtools::install_github('swarchal/phenoDist')
