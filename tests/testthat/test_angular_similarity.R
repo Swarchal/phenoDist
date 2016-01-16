@@ -6,6 +6,8 @@ test_that("angular similarity stops when given incorrect input",{
 	expect_error(angular_similarity(c("string"), c(1, 2)))
 	expect_error(angular_similarity(c("string", "string"), c("string", "string")))
 	expect_error(angular_similarity(c(1, 2, 3), c(1, 2)))
+	expect_error(angular_similarity(list(1,3,4), c(1,2,3)))
+	expect_error(angular_similarity(list(1,2), list(1,2)))
 })
 
 test_that("angular similarity returns expected answers",{
