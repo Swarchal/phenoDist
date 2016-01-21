@@ -62,6 +62,15 @@ cosine_sim_mat <- function(X){
 
 cosine_sim_vector<- function(a, b){
 
+	if (is.data.frame(a) && nrow(a) == 1 ){
+		a <- as.numeric(a)
+		warning("Converting single row dataframe into a vector")
+	}
+	if (is.data.frame(b) && nrow(b) == 1){
+		b <- as.numeric(b)
+		warning("Converting single row dataframe into a vector")
+	}
+
 	# check inputs
 	if (!is.vector(a) || !is.vector(b)){
 		stop("Inputs need to be vectors")

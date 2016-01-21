@@ -8,6 +8,9 @@ test_that("cosine_sim_vector returns errors when expected",{
 	expect_error(cosine_sim_vector(list(1,2), list(1,2)))
 	expect_error(cosine_sim_vector(iris, mtcars))
 	expect_error(cosine_sim_vector(c("a, b"), c("c", "d")))
+	expect_error(cosine_sim_vector(iris[, 1:4], iris[1, 1:4]))
+	expect_error(cosine_sim_vecot(iris[1:2, 1:4], iris[1, 1:4]))
+	expect_error(cosine_sim_vector(iris[1:2, 1:4], iris[2:4, 1:4]))
 })
 
 test_that("cosine_sim_matrix returns errors when expected",{
@@ -22,6 +25,7 @@ test_that("cosine_sim returns errors when expected",{
 })
 
 test_that("cosine_sim_vector returns expected answers",{
+	expect_equal(cosine_sim_vector(iris[1, 1:4], iris[1, 1:4]), 1)
 	expect_equal(cosine_sim_vector(c(1,2), c(1,2)), 1)
 	expect_equal(cosine_sim_vector(c(1,0), c(-1,0)), -1)
 	expect_equal(cosine_sim_vector(c(1,0), c(0,1)), 0)
