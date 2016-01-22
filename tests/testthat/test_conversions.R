@@ -6,9 +6,11 @@ test_that("both functions return warnings when inputs are outside the expected r
 })
 
 test_that("return expected answers",{
-	expect_true(angsim_to_cossim(c(0, 1, 0.5, NA)))
-	expect_true(cossom_to_angsim(c(-1, 1, 0, NA)))
-}
+  vals <- c(1, NA)
+  ans <- c(1, NA)
+  expect_equal(cossim_to_angsim(vals), ans)
+  expect_equal(angsim_to_cossim(vals), ans)
+})
 
 test_that("functions accurately convert between the two metrics",{
 
