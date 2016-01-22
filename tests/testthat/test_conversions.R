@@ -5,6 +5,11 @@ test_that("both functions return warnings when inputs are outside the expected r
 	expect_warning(angsim_to_cossim(seq(0, 2, 1)))
 })
 
+test_that("return expected answers",{
+	expect_true(angsim_to_cossim(c(0, 1, 0.5, NA)))
+	expect_true(cossom_to_angsim(c(-1, 1, 0, NA)))
+}
+
 test_that("functions accurately convert between the two metrics",{
 
 	cossim_vals <- runif(100, -1, 1)
