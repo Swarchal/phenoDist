@@ -16,7 +16,6 @@ test_that("cosine_sim_vector returns errors when expected",{
 test_that("cosine_sim_matrix returns errors when expected",{
 	expect_error(cosine_sim_mat(iris))
 	expect_error(cosine_sim_mat("string"))
-	expect_warning(cosine_sim_mat(iris[, 1:4]))
 })
 
 test_that("cosine_sim returns errors when expected",{
