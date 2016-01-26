@@ -27,7 +27,6 @@ cosine_sim_mat <- function(X){
 	# if given a dataframe, will try and convert to a matrix
 	if (is.data.frame(X)){
 		X <- as.matrix(X)
-		warning("Attempting to convert dataframe to a matrix")
 	}
 
 	# check input
@@ -64,11 +63,9 @@ cosine_sim_vector<- function(a, b){
 
 	if (is.data.frame(a) && nrow(a) == 1 ){
 		a <- as.numeric(a)
-		warning("Converting single row dataframe into a vector")
 	}
 	if (is.data.frame(b) && nrow(b) == 1){
 		b <- as.numeric(b)
-		warning("Converting single row dataframe into a vector")
 	}
 
 	# check inputs
