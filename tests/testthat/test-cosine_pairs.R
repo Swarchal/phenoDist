@@ -23,5 +23,19 @@ test_that("cosine_pairs returns expected output",{
 	expect_true(is.data.frame(out_unequal))
 	expect_equal(nrow(out), 10000)
 	expect_equal(ncol(out), 3)
-	expect_equal(nrow(out_unequal), 8100)
+	expect_equal(nrow(out_unequal), 9000)
+})
+
+
+# known answers:
+A <- c('a', 'a', 'b', 'b')
+PC1 <- c(1, 1, -1, -1)
+PC2 <- c(2, 2, -2, -2)
+df <- data.frame(A, PC1, PC2)
+df
+split_df <- split(df, df$A)
+test <- cosine_pairs(split_df, 'PC1', 'PC2')
+
+test_that("cosine_pairs returns correct results",{
+	expect_equal(test$val, c(-1, -1, -1, -1), tolerance = 1e-5)
 })

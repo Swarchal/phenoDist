@@ -70,7 +70,7 @@ cosine_pairs <- function(x, a, b){
   
   for (i in 1:nrow(pairs_names)){
     tmp1 <- x[[pairs_names[i, 1]]]
-    tmp2 <- x[[pairs_names[i, 1]]]
+    tmp2 <- x[[pairs_names[i, 2]]]
     
     # loop through rows in cmpd A and cmpd B
     # calculate the cosine similarity between the two vectors
