@@ -21,9 +21,9 @@ test_that("cosine_pairs returns errors when expected",{
 
 test_that("cosine_pairs returns expected output",{
 	expect_true(is.data.frame(out_unequal))
-	expect_equal(nrow(out), 10000)
+	expect_equal(nrow(out), 30000)
 	expect_equal(ncol(out), 3)
-	expect_equal(nrow(out_unequal), 9000)
+	expect_equal(nrow(out_unequal), 28000)
 })
 
 
