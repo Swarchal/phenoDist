@@ -55,7 +55,7 @@ expand_grid_unique <- function (x, y, include.equals = FALSE)
 
 cosine_pairs <- function(x, a, b){
   
-  if (!is.list(x)){
+  if (!is.list(x) || is.data.frame(x)){
     stop("Expecting a list")
   }
   
