@@ -3,6 +3,7 @@
 export(angsim_to_cossim)
 export(angular_similarity)
 export(average_vector)
+export(centre_control)
 export(cosine_pairs)
 export(cosine_sim)
 export(cosine_sim_mat)
