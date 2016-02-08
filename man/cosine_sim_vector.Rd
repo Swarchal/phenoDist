@@ -4,12 +4,14 @@
 \alias{cosine_sim_vector}
 \title{Cosine similarity between two vectors}
 \usage{
-cosine_sim_vector(a, b)
+cosine_sim_vector(a, b, ...)
 }
 \arguments{
 \item{a}{vector}
 
 \item{b}{vector}
+
+\item{...}{optional arguments to sum (i.e na.rm = TRUE)}
 }
 \value{
 out cosine similarity

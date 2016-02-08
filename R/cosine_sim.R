@@ -4,6 +4,7 @@
 #' internal function for \code{cosine_sim()}
 #'
 #' @param X matrix
+#' @param ... optional arguments to sum (i.e na.rm = TRUE)
 #'
 #' @return C cosine similarity matrix
 #'
@@ -16,12 +17,12 @@
 #' image(out)
 
 
-cosine_sim_mat <- function(X){
+cosine_sim_mat <- function(X, ...){
 
 	cos_sim <- function(ix){
     A = X[ix[1],]
     B = X[ix[2],]
-    return(sum(A * B) / sqrt(sum(A^2) * sum(B^2)))
+    return(sum(A * B) / sqrt(sum(A^2, ...) * sum(B^2, ...)))
 	}
 
 	# if given a dataframe, will try and convert to a matrix
@@ -48,6 +49,7 @@ cosine_sim_mat <- function(X){
 #'
 #' @param a vector
 #' @param b vector
+#' @param ... optional arguments to sum (i.e na.rm = TRUE)
 #'
 #' @return out cosine similarity
 #'
@@ -59,7 +61,7 @@ cosine_sim_mat <- function(X){
 #' y <- rnorm(20)
 #' cosine_sim_vector(x, y)
 
-cosine_sim_vector<- function(a, b){
+cosine_sim_vector<- function(a, b, ...){
 
 	if (is.data.frame(a) && nrow(a) == 1 ){
 		a <- as.numeric(a)
@@ -79,7 +81,7 @@ cosine_sim_vector<- function(a, b){
 		stop("'a' and 'b' need to be the same length")
 	}
 
-    out <- sum(a * b) / sqrt(sum(a^2) * sum(b^2))
+    out <- sum(a * b, ...) / sqrt(sum(a^2, ...) * sum(b^2, ...))
     return(out)
 }
 

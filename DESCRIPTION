@@ -5,7 +5,7 @@ Authors@R: person("Scott", "Warchal", email = "S.Warchal@sms.ed.ac.uk", role = c
 Description: Functions for my own use. Useful for distance measurements in
     phenotypic screening..
 Depends:
-    R (>= 3.2.3)
+    R (>= 3.2.1)
 License: MIT
 LazyData: true
 Suggests:

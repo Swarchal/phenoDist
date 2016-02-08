@@ -4,10 +4,12 @@
 \alias{cosine_sim_mat}
 \title{Creates a cosine similarity matrix}
 \usage{
-cosine_sim_mat(X)
+cosine_sim_mat(X, ...)
 }
 \arguments{
 \item{X}{matrix}
+
+\item{...}{optional arguments to sum (i.e na.rm = TRUE)}
 }
 \value{
 C cosine similarity matrix
