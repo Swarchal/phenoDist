@@ -1,14 +1,14 @@
 #' Z-prime / Z-factor
 #'
 #' Calculates #' Calculates a Z-factor for two distributions
-#' 
+#'
 #' Calculates a Z-factor of Z-prime for two distributions, used to assess the
 #' separation between positive and negative controls in high-throughput screens.
 #' A value > 0.5 is indicative of a strong assay.
-#' 
+#'
 #' @param positive Vector
 #' @param negative Vector
-#' 
+#'
 #' @return z-factor
 #'
 #' @examples
@@ -66,25 +66,29 @@ z_factor <- function(positive, negative){
 #' @export
 
 multi_z <- function(df, feature_cols, cmpd_col, pos, neg, ...){
-	
+
 	# subset df into temp df for lda calculation
-	tmp_df <- data.frame(df[, c(featurecols, cmpd_col)])
-	
+	tmp_df <- data.frame(df[, feature_cols],
+	                     cmpd_col = df[, cmpd_col])
+
 	# subset only positive and negative controls from df
 	compounds <- c(pos, neg)
-	tmp_df_subset <- tmp_df[tmp_df[, cmpd_col] %in% compounds, ]
-	
+	tmp_df_subset <- tmp_df[ tmp_df$cmpd_col %in% compounds, ]
+
+	# drop empty factors otherwise lda throws a fit
+	tmp_df_subset$cmpd_col <- factor(tmp_df_subset$cmpd_col)
+
 	# lda of feature cols separated by pos and negative control
 	lda_model <- lda(cmpd_col ~ ., tmp_df_subset)
 	lda_out <- predict(lda_model, tmp_df_subset)
 	lda_1 <- lda_out$x[,1]
-	
-	lda_df <- data.frame(lda_1, tmp_df_subset[, cmpd_col])
+
+	lda_df <- data.frame(lda_1, cmpd_col = tmp_df_subset$cmpd_col)
 
 	# z-prime of the lda values between pos and negative control
-	pos_control <- lda_df[lda_df[, cmpd_col] == pos, 1]
-	neg_control <- lda_df[lda_df[, cmpd_col] == neg, 1]
-	z <- z_prime(pos_control, neg_control)
-	
+	pos_control <- lda_df[lda_df$cmpd_col == pos, 1]
+	neg_control <- lda_df[lda_df$cmpd_col == neg, 1]
+	z <- z_factor(pos_control, neg_control)
+
 	return(z)
 }
