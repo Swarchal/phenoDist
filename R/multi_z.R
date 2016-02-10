@@ -68,7 +68,7 @@ z_factor <- function(positive, negative){
 multi_z <- function(df, feature_cols, cmpd_col, pos, neg, ...){
 	
 	# subset df into temp df for lda calculation
-	tmp_df <- data.frame(df[, c(featurecols, cmpd_col))
+	tmp_df <- data.frame(df[, c(featurecols, cmpd_col)])
 	
 	# subset only positive and negative controls from df
 	compounds <- c(pos, neg)
