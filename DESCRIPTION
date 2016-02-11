@@ -10,4 +10,5 @@ License: MIT
 LazyData: true
 Suggests:
     testthat
+Imports: MASS
 RoxygenNote: 5.0.1
