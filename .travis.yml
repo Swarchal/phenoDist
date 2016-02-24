@@ -1,4 +1,4 @@
-language: rd
+language: r
 
 sudo: required
 
