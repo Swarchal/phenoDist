@@ -1,5 +1,4 @@
-language: r
-sudo: required
+language: rd
 
 r_packages:
   - covr
