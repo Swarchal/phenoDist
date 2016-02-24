@@ -1,5 +1,7 @@
 language: rd
 
+sudo: required
+
 r_packages:
   - covr
 
