@@ -10,5 +10,7 @@ License: MIT + file LICENSE
 LazyData: true
 Suggests:
     testthat
-Imports: MASS
+Imports:
+	MASS,
+	fpc
 RoxygenNote: 5.0.1
