@@ -69,6 +69,9 @@ z_factor <- function(positive, negative){
 
 multi_z <- function(df, feature_cols, cmpd_col, pos, neg, ...){
 
+	# check cmpd_col are factors
+	df[, cmpd_col] <- as.factor(df[, cmpd_col])
+
 	# subset df into temp df for lda calculation
 	tmp_df <- data.frame(df[, feature_cols],
 	                     cmpd_col = df[, cmpd_col])

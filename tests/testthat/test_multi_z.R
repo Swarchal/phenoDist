@@ -13,7 +13,7 @@ out <- multi_z(
 	pos = "setosa",
 	neg = "versicolor")
 
-test_that("error when cmpd col includes a non-numeric",{
+test_that("error feature_col includes a non-numeric",{
 	# include column that's a string
 	expect_error(multi_z(
 		df = iris_2,
@@ -35,4 +35,17 @@ test_that("error when control isn't present",{
 
 test_that("returns a numeric answer",{
 	expect_true(is.numeric(out))
+})
+
+
+test_that("successfully converts strings to factors",{
+  iris_3 <- iris
+  iris_3$Species <- as.character(iris_3$Species)
+  out <- multi_z(
+    df = iris_3,
+    feature_cols = 1:4,
+    cmpd_col = "Species",
+    pos = "setosa",
+    neg = "versicolor")
+  expect_true(is.numeric(out))
 })
