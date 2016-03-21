@@ -77,7 +77,7 @@ multi_z <- function(df, feature_cols, cmpd_col, pos, neg, ...){
 	tmp_df_subset$cmpd_col <- factor(tmp_df_subset$cmpd_col)
 
 	# lda of feature cols separated by pos and negative control
-	lda_model <- lda(cmpd_col ~ ., tmp_df_subset)
+	lda_model <- lda(cmpd_col ~ ., tmp_df_subset, ...)
 	lda_out <- predict(lda_model, tmp_df_subset)
 	lda_1 <- lda_out$x[,1]
 
