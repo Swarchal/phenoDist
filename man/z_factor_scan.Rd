@@ -4,13 +4,16 @@
 \alias{z_factor_scan}
 \title{Multiple z-factor calculations}
 \usage{
-z_factor_scan(data, treatments, cutoff = 0.5, n = FALSE)
+z_factor_scan(data, treatment_col, treatments, cutoff = 0.5, n = FALSE)
 }
 \arguments{
 \item{data}{Dataframe, containing only numerical columns of features and
 single column of treatment labels}
 
-\item{treatments}{Vector of factors of treatment groups under the column of 'header'}
+\item{treatment_col}{string, name of column containing treatments}
+
+\item{treatments}{vector of strings, names of positive and negative control.
+i.e c("DMSO", "STS)}
 
 \item{cutoff}{Minimum z-factor threshold for returning featues. Default is 0.5}
 

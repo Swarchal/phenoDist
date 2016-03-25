@@ -6,7 +6,9 @@
 #' 
 #' @param data Dataframe, containing only numerical columns of features and
 #' 		single column of treatment labels
-#' @param treatments Vector of factors of treatment groups under the column of 'header'
+#' @param treatment_col string, name of column containing treatments
+#' @param treatments vector of strings, names of positive and negative control.
+#'	    i.e c("DMSO", "STS)
 #' @param cutoff Minimum z-factor threshold for returning featues. Default is 0.5
 #' @param n Highest n features to be returned
 #'
@@ -14,9 +16,9 @@
 #' 
 
 
-z_factor_scan <- function(data, treatments,cutoff = 0.5, n = FALSE){
+z_factor_scan <- function(data, treatment_col, treatments, cutoff = 0.5, n = FALSE){
 
-    header_in <- which(colnames(data) == "header") # index of column named 'header'
+    header_in <- which(colnames(data) == treatment_col) # index treatment_col
     nums <- (1:dim(data)[2])[ - header_in] # indices of all columns except header
     z_values <- c() # initialise for the loop
     z_names <- c() # initialise for the loop
@@ -33,7 +35,7 @@ z_factor_scan <- function(data, treatments,cutoff = 0.5, n = FALSE){
     if (n == FALSE){
 	z_factors <- data.frame(z_names, z_values) # create dataframe
 	# subset of z_factors above cutoff
-	z_factors_good <- subset(z_factors, z_factors$z_values > cutoff)
+	z_factors_good <- z_factors[z_factors$z_values > cutoff]
 	# names for dataframe columns
 	names(z_factors_good)[c(1,2)] <- c("Feature", "Z_factor")
 	# order dataframe from highest z-factor to the lowest
