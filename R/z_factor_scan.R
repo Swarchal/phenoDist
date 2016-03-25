@@ -19,14 +19,14 @@
 z_factor_scan <- function(data, treatment_col, treatments, cutoff = 0.5, n = FALSE){
 
     header_in <- which(colnames(data) == treatment_col) # index treatment_col
-    nums <- (1:dim(data)[2])[ - header_in] # indices of all columns except header
+    nums <- (1:ncol(data))[- header_in] # indices of all columns except header
     z_values <- c() # initialise for the loop
     z_names <- c() # initialise for the loop
     
     for (number in nums){ # for each feature (except header)
 	z_values[number] <- as.vector(
-	z_factor(subset(data[,number], data$header == treatments[1]),
-             subset(data[,number], data$header == treatments[2]))
+	    z_factor(data[data[, treatment_col] == treatments[1], number],
+		     data[data[, treatment_col] == treatments[2], number])
 	)
 	z_names[number] <- names(data)[number]
     }
@@ -35,7 +35,7 @@ z_factor_scan <- function(data, treatment_col, treatments, cutoff = 0.5, n = FAL
     if (n == FALSE){
 	z_factors <- data.frame(z_names, z_values) # create dataframe
 	# subset of z_factors above cutoff
-	z_factors_good <- z_factors[z_factors$z_values > cutoff]
+	z_factors_good <- z_factors[z_factors$z_values > cutoff, ]
 	# names for dataframe columns
 	names(z_factors_good)[c(1,2)] <- c("Feature", "Z_factor")
 	# order dataframe from highest z-factor to the lowest
