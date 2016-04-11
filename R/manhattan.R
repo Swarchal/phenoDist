@@ -25,7 +25,7 @@ manhattan <- function(x, y){
 #' Normalised Manhattan distance
 #'
 #' Manhattan distance normalised by the length of the vectors. This is the sum
-#' of the absolute differnce between two vectors divided by the length of the
+#' of the absolute difference between two vectors divided by the length of the
 #' vectors. i.e \code{a <- c(1,2,3); b <- c(3,2,1) ; manhattan(a, b)/3}
 #'
 #' @param x numeric vector
