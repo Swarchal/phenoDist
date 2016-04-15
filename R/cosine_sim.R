@@ -20,9 +20,9 @@
 cosine_sim_mat <- function(X, ...){
 
 	cos_sim <- function(ix){
-    A = X[ix[1],]
-    B = X[ix[2],]
-    return(sum(A * B) / sqrt(sum(A^2, ...) * sum(B^2, ...)))
+	    A = X[ix[1],]
+	    B = X[ix[2],]
+	    sum(A * B) / sqrt(sum(A^2, ...) * sum(B^2, ...))
 	}
 
 	# if given a dataframe, will try and convert to a matrix
@@ -37,8 +37,7 @@ cosine_sim_mat <- function(X, ...){
 
     n <- nrow(X) 
     cmb <- expand.grid(i = 1:n, j = 1:n) 
-    C <- matrix(apply(cmb, 1, cos_sim), n, n)
-    return(C)
+    matrix(apply(cmb, 1, cos_sim), n, n)
 }
 
 
@@ -63,26 +62,25 @@ cosine_sim_mat <- function(X, ...){
 
 cosine_sim_vector<- function(a, b, ...){
 
-	if (is.data.frame(a) && nrow(a) == 1 ){
-		a <- as.numeric(a)
-	}
-	if (is.data.frame(b) && nrow(b) == 1){
-		b <- as.numeric(b)
-	}
+    if (is.data.frame(a) && nrow(a) == 1){
+	    a <- as.numeric(a)
+    }
+    if (is.data.frame(b) && nrow(b) == 1){
+	    b <- as.numeric(b)
+    }
 
-	# check inputs
-	if (!is.vector(a) || !is.vector(b)){
-		stop("Inputs need to be vectors")
-	}
-	if (!is.numeric(a) || !is.numeric(b)){
-		stop("Inputs need to be numeric")
-	}
-	if (length(a) != length(b)){
-		stop("'a' and 'b' need to be the same length")
-	}
+    # check inputs
+    if (!is.vector(a) || !is.vector(b)){
+	    stop("Inputs need to be vectors")
+    }
+    if (!is.numeric(a) || !is.numeric(b)){
+	    stop("Inputs need to be numeric")
+    }
+    if (length(a) != length(b)){
+	    stop("'a' and 'b' need to be the same length")
+    }
 
-    out <- sum(a * b, ...) / sqrt(sum(a^2, ...) * sum(b^2, ...))
-    return(out)
+    sum(a * b, ...) / sqrt(sum(a^2, ...) * sum(b^2, ...))
 }
 
 
@@ -121,11 +119,9 @@ cosine_sim <- function(...){
     dots <- list(...)
     if (length(dots) == 1){
         # a matrix
-        out <- cosine_sim_mat(dots[[1]])
+        cosine_sim_mat(dots[[1]])
     } else if (length(dots) == 2){
     	# two vectors
-        out <- cosine_sim_vector(dots[[1]], dots[[2]])
+        cosine_sim_vector(dots[[1]], dots[[2]])
     } else stop("Need either a matrix or two vectors")
-
-    return(out)
 }

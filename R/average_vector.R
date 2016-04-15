@@ -19,6 +19,5 @@ average_vector <- function(x){
 	}
 
 	# data will be in the form of rows = vectors, columns = components
-	means <- as.vector(colMeans(x))
-	return(means)
+	as.vector(colMeans(x))
 }

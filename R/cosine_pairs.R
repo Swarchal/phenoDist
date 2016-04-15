@@ -85,6 +85,5 @@ cosine_pairs <- function(x, a, b){
       }
     }
   }
-	df <- data.frame(A, B, vals)
-	return(df)
+    data.frame(A, B, vals)
 }
