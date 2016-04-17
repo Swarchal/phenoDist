@@ -39,3 +39,20 @@ test <- cosine_pairs(split_df, 'PC1', 'PC2')
 test_that("cosine_pairs returns correct results",{
 	expect_equal(test$val, c(-1, -1, -1, -1), tolerance = 1e-5)
 })
+
+
+# answer from original algorithm
+set.seed(12321)
+cmpds <- c(rep('a', 100), rep('b', 100), rep('c', 100))
+replicate <- rep(1:100, 3)
+PC1 <- rnorm(300)
+PC2 <- rnorm(300)
+
+df <- data.frame(cmpds, replicate, PC1, PC2)
+
+df_split <- split(df, df$cmpds)
+
+# works with unequal replicate sizes
+df_split$a <- df_split$a[-c(1:10), ]
+
+out_orig <- cosine_pairs(df_split, 'PC2', 'PC2')
