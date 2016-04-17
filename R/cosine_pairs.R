@@ -1,11 +1,10 @@
 #' Calculate pairs of cosine similarities between replicates
 #'
-#' Given a list, with an element per compound, columns \code{A} and \code{B}
+#' Given a list, with an element per compound, \code{cols}
 #' are the elements of the vector with which to calculate the cosine
 #' similarity
 #' @param x list
-#' @param a name of column for first vector element
-#' @param b name of column for second vector element
+#' @param cols integer, column indices
 #'
 #' @return dataframe of compound combinations across replicates with a column 
 #'    of cosine similarity values
@@ -25,10 +24,10 @@
 #' # works with unequal replicate sizes
 #' df_split$a <- df_split$a[-c(1:10), ]
 #' 
-#' cosine_pairs(df_split, 'PC1', 'PC2')
+#' cosine_pairs(df_split, 3:4)
 
 
-cosine_pairs <- function(x, a, b){
+cosine_pairs <- function(x, cols){
           
     if (!is.list(x) || is.data.frame(x)){
 	stop("Expecting a list", call. = FALSE)
@@ -51,9 +50,8 @@ cosine_pairs <- function(x, a, b){
     # calculate the cosine similarity between the two vectors
     for (j in 1:nrow(tmp1)){
 	for (k in 1:nrow(tmp2)){
-	    vals <- c(vals, cosine_sim_vector(
-	    c(tmp1[j, a], tmp1[j, b]),
-	    c(tmp2[k, a], tmp2[k, b])))
+	    vals <- c(vals,
+	              cosine_sim_vector(tmp1[j, cols], tmp2[k, cols]))
 	
 	    A <- c(A, pairs_names[i, 1])
 	    B <- c(B, pairs_names[i, 2])

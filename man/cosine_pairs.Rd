@@ -4,21 +4,19 @@
 \alias{cosine_pairs}
 \title{Calculate pairs of cosine similarities between replicates}
 \usage{
-cosine_pairs(x, a, b)
+cosine_pairs(x, cols)
 }
 \arguments{
 \item{x}{list}
 
-\item{a}{name of column for first vector element}
-
-\item{b}{name of column for second vector element}
+\item{cols}{integer, column indices}
 }
 \value{
 dataframe of compound combinations across replicates with a column 
    of cosine similarity values
 }
 \description{
-Given a list, with an element per compound, columns \code{A} and \code{B}
+Given a list, with an element per compound, \code{cols}
 are the elements of the vector with which to calculate the cosine
 similarity
 }
@@ -35,6 +33,6 @@ df_split <- split(df, df$cmpds)
 # works with unequal replicate sizes
 df_split$a <- df_split$a[-c(1:10), ]
 
-cosine_pairs(df_split, 'PC1', 'PC2')
+cosine_pairs(df_split, 3:4)
 }
 
