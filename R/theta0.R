@@ -1,3 +1,11 @@
+#' norm of a vector
+#'
+#' @param x vector
+    
+ # length/norm of a vector 'x'
+norm_vec <- function(x) sqrt(x %*% x)
+
+
 #' Angle between a vector and the origin
 #' 
 #' Calculates the angle (in degrees) between a vector and the origin (1,0)
@@ -23,9 +31,6 @@ theta0 <- function(a){
     if (length(a) != 2){
         stop("input vector needs to have a length of 2")
     }
-    
-    # length/norm of a vector 'x'
-    norm_vec <- function(x) sqrt(x %*% x)
     
     # origin vector
     origin <- c(1, 0)
