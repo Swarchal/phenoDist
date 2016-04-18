@@ -46,3 +46,18 @@ theta0 <- function(a){
     }
 
 }
+
+#' Angle between the vector and the origin
+#'
+#' Calculates and angle (in degrees) between the vector and the origin
+#' \code{c(1, rep(0, length(vector) - 1))}
+#'
+#' @param a numeric vector
+#' @export
+
+theta0_ <- function(a){
+
+    origin <- c(1, rep(0, (length(a) - 1)))
+    stopifnot(length(a) == length(origin))
+    as.vector(acos(a %*% origin / (norm_vec(a) * norm_vec(origin))) * 180/pi)
+}  
