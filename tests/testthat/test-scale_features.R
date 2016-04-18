@@ -9,15 +9,21 @@ df <- data.frame(Metadata_x = meta,
 out <- scale_features(df)
 
 test_that("scale_features returns a dataframe",{
-    expect_is(out, 'matrix')
+    expect_is(out, 'data.frame')
 })
 
 test_that("scale features returns correct dimensions",{
     expect_equal(nrow(out), 96L)
-    expect_equal(ncol(out), 2L) # only returns scaled columns
+    expect_equal(ncol(out), ncol(df))
 })
 
 test_that("scales values",{
-   expect_equal(mean(out[,1]), 0L, tolerance = 1e-3)
    expect_equal(mean(out[,2]), 0L, tolerance = 1e-3)
+   expect_equal(mean(out[,3]), 0L, tolerance = 1e-3)
+})
+
+test_that("has SD of 1",{
+    sd_out <- apply(out[,2:3], 2, sd)
+    print(sd_out)
+    expect_equal(sd_out, c(1,1))
 })
