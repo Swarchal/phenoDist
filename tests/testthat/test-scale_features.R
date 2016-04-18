@@ -24,6 +24,5 @@ test_that("scales values",{
 
 test_that("has SD of 1",{
     sd_out <- apply(out[,2:3], 2, sd)
-    print(sd_out)
-    expect_equal(sd_out, c(1,1))
+    expect_equal(as.vector(sd_out), c(1,1))
 })
