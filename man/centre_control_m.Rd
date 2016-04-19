@@ -33,7 +33,7 @@ or columns, whereas \code{centre_control} is limited to 2 named columns.
 # artifical example using iris
 pca <- prcomp(iris[,1:4])$x[,1:3]
 df <- data.frame(pca, name = iris[,5])
-pca_shift <- centre_control(df, 1:3,  cmpd_col = 'name', cmpd = 'setosa')
+pca_shift <- centre_control_m(df, 1:3,  cmpd_col = 'name', cmpd = 'setosa')
 
 par(mfrow = c(2,1))
 plot(df$PC1, df$PC2, col = df$name, pch = 20)
