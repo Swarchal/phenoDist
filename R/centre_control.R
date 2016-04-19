@@ -108,7 +108,7 @@ centre_control_m <- function(df, cols, cmpd_col, cmpd){
     d <- 0 - centroids
 
     # shift values in columns
-    for (col in seq_along(cols)){
+    for (i in seq_along(cols)){
 	df[, cols][i] <- df[, cols][i] + d[i]
     }
 
