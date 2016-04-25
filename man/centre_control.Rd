@@ -4,21 +4,19 @@
 \alias{centre_control}
 \title{Shift co-ordinates to centre on a compounds centroid}
 \usage{
-centre_control(df, x, y, cmpd_col, cmpd)
+centre_control(df, cols, cmpd_col, cmpd)
 }
 \arguments{
 \item{df}{dataframe}
 
-\item{x}{column of x co-ordinates}
-
-\item{y}{column of y-co-ordinates}
+\item{cols}{column indicies or names}
 
 \item{cmpd_col}{column containing names to subset with \code{cmpd}}
 
 \item{cmpd}{name of compound to subset \code{cmpd_col} with}
 }
 \value{
-dataframe containing x, y, cmpd_col columns shifted so that
+dataframe of 'df' shifted so that
   cmpd is centered on 0,0
 }
 \description{
@@ -27,13 +25,15 @@ is always centered on 0,0. Useful for PCA biplots where the 0,0 denotes the
 centroid of the entire data, and not necessarily the negative control. If 
 given a dataframe and specified columns for the x and y co-ordinates, this
 function will shift the co-ordinates to be centered on the centroid of a
-specified compound.
+specified compound. The difference between \code{centre_control} and 
+\code{centre_controls_m} is that \code{centre_control_m} can centre a range
+or columns, whereas \code{centre_control} is limited to 2 named columns.
 }
 \examples{
 # artifical example using iris
-pca <- prcomp(iris[,1:4])$x[,1:2]
+pca <- prcomp(iris[,1:4])$x[,1:3]
 df <- data.frame(pca, name = iris[,5])
-pca_shift <- centre_control(df, x = 'PC1', y = 'PC2', cmpd_col = 'name', cmpd = 'setosa')
+pca_shift <- centre_control(df, 1:3,  cmpd_col = 'name', cmpd = 'setosa')
 
 par(mfrow = c(2,1))
 plot(df$PC1, df$PC2, col = df$name, pch = 20)

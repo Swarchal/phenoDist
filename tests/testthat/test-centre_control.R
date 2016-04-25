@@ -2,7 +2,8 @@ context("test centre_control")
 
 pca <- prcomp(iris[,1:4])$x[,1:2]
 df <- data.frame(pca, name = iris[,5])
-pca_shift <- centre_control(df, x = 'PC1', y = 'PC2', cmpd_col = 'name', cmpd = 'setosa')
+pca_shift <- centre_control(df, cols = 1:2,
+			    cmpd_col = 'name', cmpd = 'setosa')
 
 test_that("centre_control returns errors when expected",{
 
