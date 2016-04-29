@@ -24,6 +24,6 @@ fold_180 <- function(x){
   	warning("Input values exceed 360, will produce negative values")
   }
 
-  out <- ifelse(x > 180,  x - 2 * (x - 180), x)
+  out <- ifelse(x > 180,  360 - x, x)
   out
 }
