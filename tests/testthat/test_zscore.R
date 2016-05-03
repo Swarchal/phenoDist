@@ -11,5 +11,6 @@ test_that("zscore returns same values as scale",{
     zscore_out <- zscore(data)
     scale_out <- scale(data)
     attributes(scale_out) <- NULL
-    expect_equal(zscore_out, scale_out)
+    expect_equal(as.vector(zscore_out),
+		 as.vector(scale_out))
 })

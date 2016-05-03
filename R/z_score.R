@@ -6,7 +6,9 @@
 #' @param ... additional arguments for mean and sd
 #' @export
 #' 
+
 zscore <- function(x, ...){
+    x <- as.matrix(x)
     (x - mean(x, ...)) / sd(x, ...)
 }
 
@@ -21,5 +23,6 @@ zscore <- function(x, ...){
 #' @export
 
 r_zscore <- function(x, ...){
+    x <- as.matrix(x)
     (x - median(x, ...)) / mad(x, ...)
 }
