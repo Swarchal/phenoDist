@@ -27,3 +27,12 @@ test_that("winsorise converts tails to quantile values",{
     expect_equal(x[1], x[2])
     expect_equal(x[length(x)], x[length(x)-1])
 })
+
+test_that("mean winsor returns single value",{
+    out <- winsorise_mean(x)
+    expect_equal(length(out), 1L)
+})
+
+test_that("mean winsor returns different answer to mean",{
+    expect_false(winsorise_mean(x) == mean(x))
+})
