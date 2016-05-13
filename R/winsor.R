@@ -8,6 +8,7 @@
 #' @param na.rm boolean, whether to remove NA values
 
 winsor_ <- function (x, trim = 0.2, na.rm = TRUE) {
+
     if ((trim < 0) | (trim > 0.5)) {
 	stop("trimming must be reasonable")
     }
@@ -34,11 +35,12 @@ winsor_ <- function (x, trim = 0.2, na.rm = TRUE) {
 #' @export
 
 winsorise <- function (x, trim = 0.2, na.rm = TRUE) {
+
     if (is.vector(x)) {
-	ans <- wins(x, trim = trim, na.rm = na.rm)
+	ans <- winsor_(x, trim = trim, na.rm = na.rm)
     } else {
 	if (is.matrix(x) | is.data.frame(x)) {
-	ans <- apply(x, 2, wins, trim = trim, na.rm = na.rm)
+	ans <- apply(x, 2, winsor_, trim = trim, na.rm = na.rm)
     }
     return(ans)
 }
