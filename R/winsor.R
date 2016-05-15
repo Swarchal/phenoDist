@@ -56,6 +56,6 @@ winsorise <- function (x, trim = 0.2, na.rm = TRUE) {
 #' @param na.rm boolean, whether to remove NA values
 #' @export
 
-winsorise_mean <- function(x, trim, na.rm = TRUE) {   
+winsorise_mean <- function(x, trim = 0.2, na.rm = TRUE) {   
     mean(winsorise(x, trim, na.rm))
 }
