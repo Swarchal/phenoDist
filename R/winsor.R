@@ -41,6 +41,7 @@ winsorise <- function (x, trim = 0.2, na.rm = TRUE) {
     } else {
 	if (is.matrix(x) | is.data.frame(x)) {
 	ans <- apply(x, 2, winsor_, trim = trim, na.rm = na.rm)
+	}
     }
     return(ans)
 }
@@ -51,7 +52,7 @@ winsorise <- function (x, trim = 0.2, na.rm = TRUE) {
 #'
 #' @param x vector of numbers
 #' @param trim float, proportion of trim at either end of distribution,
-#'	expectedd value between 0 and 0.5
+#'	expected value between 0 and 0.5
 #' @param na.rm boolean, whether to remove NA values
 #' @export
 
